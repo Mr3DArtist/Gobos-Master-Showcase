@@ -434,7 +434,7 @@ section { scroll-margin-top: 84px; }
 /* Intro split — gobo categories list + video */
 .intro-split {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
   gap: 1.4rem;
   align-items: stretch;
   margin-top: 1.8rem;
@@ -468,7 +468,7 @@ section { scroll-margin-top: 84px; }
   display: grid;
   grid-template-columns: auto 2.4ch 1fr 14ch;
   align-items: baseline;
-  gap: .6rem 1.2rem;
+  gap: .5rem .55rem;
   font-size: .92rem;
 }
 .gobo-list li::before {
@@ -480,17 +480,25 @@ section { scroll-margin-top: 84px; }
   align-self: center;
   flex: none;
 }
-.gl-count { font-weight: 700; color: var(--color-tertiary); }
-.gl-name { color: var(--ink); font-size: 1.15rem; font-weight: 600; }
+.gl-count { font-weight: 700; color: var(--color-tertiary); font-size: .9rem; }
+.gl-name { color: var(--ink); font-size: .9rem; font-weight: 600; }
 .gl-type {
   color: var(--muted);
-  font-size: .8rem;
+  font-size: .72rem;
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
   text-align: left;
 }
 .intro-media { margin: 0 !important; }
+.intro-outer-card {
+  border: 1px solid var(--border-strong);
+  border-radius: 22px;
+  background: var(--card-bg);
+  padding: .55rem;
+  box-shadow: var(--shadow-light);
+}
+.intro-outer-card .intro-split { margin-top: 0; }
 
 /* Road map */
 .roadmap { list-style: none; display: grid; gap: 1rem; margin-top: 1.6rem; }
@@ -743,7 +751,7 @@ section { scroll-margin-top: 84px; }
 /* ============================================================
    LIQUID GLASS — refractive, glossy surfaces
    ============================================================ */
-.g-frame, .feature-card, .cta-band, .price-card, .accordion, .img-frame, .c-card, .intro-list-card, .roadmap-card {
+.g-frame, .feature-card, .cta-band, .price-card, .accordion, .img-frame, .c-card, .intro-list-card, .roadmap-card, .intro-outer-card {
   position: relative;
   background-color: var(--card-bg);
   background-image:
@@ -769,12 +777,12 @@ section { scroll-margin-top: 84px; }
 .price-card.featured { border-color: var(--color-tertiary); }
 
 /* Button-5 style expanding outline on cards */
-.feature-card, .price-card, .c-card, .g-frame, .cta-band, .accordion, .img-frame, .hero-media, .rating-card, .seam-label, .special-offer, .intro-list-card, .roadmap-card {
+.feature-card, .price-card, .c-card, .g-frame, .cta-band, .accordion, .img-frame, .hero-media, .rating-card, .seam-label, .special-offer, .intro-list-card, .roadmap-card, .intro-outer-card {
   outline: 1px solid rgba(255,255,255,.5);
   outline-offset: 0;
   transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease, background-position .5s ease, outline-offset .7s cubic-bezier(.19,1,.22,1), outline-color .7s cubic-bezier(.19,1,.22,1);
 }
-.feature-card:hover, .price-card:hover, .c-card:hover, .g-frame:hover, .cta-band:hover, .accordion:hover, .img-frame:hover, .hero-media:hover, .rating-card:hover, .seam-label:hover, .special-offer:hover, .intro-list-card:hover, .roadmap-card:hover {
+.feature-card:hover, .price-card:hover, .c-card:hover, .g-frame:hover, .cta-band:hover, .accordion:hover, .img-frame:hover, .hero-media:hover, .rating-card:hover, .seam-label:hover, .special-offer:hover, .intro-list-card:hover, .roadmap-card:hover, .intro-outer-card:hover {
   outline-color: rgba(255,255,255,0);
   outline-offset: 15px;
 }
@@ -1176,7 +1184,8 @@ var MEDIA_URLS = {
         love and effort to meet your needs and save your precious time while adding realism to your renders.
       </p>
     </div>
-    <div class="intro-split reveal">
+    <div class="intro-outer-card reveal">
+      <div class="intro-split">
       <div class="intro-list-card">
         <ul class="gobo-list">
           <li><span class="gl-count">16</span><span class="gl-name">Fences</span><span class="gl-type">Static</span></li>
@@ -1197,6 +1206,7 @@ var MEDIA_URLS = {
       <div class="img-frame intro-media">
         <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video03.mp4?v=599bbeef" aria-label="Gobos Master showcase"></video>
       </div>
+    </div>
     </div>
   </div>
 </section>
