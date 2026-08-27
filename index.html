@@ -878,6 +878,20 @@ section { scroll-margin-top: 84px; }
   else { r.classList.toggle('dark', window.matchMedia('(prefers-color-scheme: dark)').matches); }
 })();
 </script>
+<script>
+/* ============================================================
+   ASSET BASE FIX — resolve assets/ relative to the page location
+   so images/videos work on GitHub Pages project sub-paths.
+   ============================================================ */
+(function () {
+  'use strict';
+  var dir = location.pathname.substring(0, location.pathname.lastIndexOf('/') + 1);
+  document.querySelectorAll('img[src^="assets/"], video[src^="assets/"], source[src^="assets/"]').forEach(function (el) {
+    var src = el.getAttribute('src');
+    if (src && src.indexOf('assets/') === 0) el.setAttribute('src', dir + src);
+  });
+})();
+</script>
 
 <!-- ============================================================ -->
 <!-- 1. STICKY HEADER -->
