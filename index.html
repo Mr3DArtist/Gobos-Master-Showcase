@@ -866,6 +866,69 @@ section { scroll-margin-top: 84px; }
   outline-color: color-mix(in srgb, var(--ink) 20%, transparent);
 }
 
+/* Before/after comparison slider */
+.compare {
+  --pos: 50%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-light);
+  aspect-ratio: 16 / 9;
+  margin: 1.6rem 0;
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+}
+.compare-img { position: absolute; inset: 0; }
+.compare-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.compare-after { z-index: 1; }
+.compare-before { z-index: 2; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.compare-label {
+  position: absolute; bottom: 14px;
+  font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: #fff;
+  background: rgba(0, 0, 0, .45);
+  border: 1px solid rgba(255, 255, 255, .25);
+  padding: .35rem .8rem; border-radius: 999px;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, .5);
+}
+.compare-label-left { left: 14px; }
+.compare-label-right { right: 14px; }
+.compare-handle {
+  position: absolute; top: 0; left: var(--pos);
+  width: 3px; height: 100%;
+  background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.35));
+  box-shadow: 0 0 14px rgba(0, 0, 0, .45);
+  transform: translateX(-50%);
+  cursor: ew-resize; touch-action: none; outline: none;
+  z-index: 3;
+}
+.compare-knob {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  background: linear-gradient(160deg, #ffffff, #e4e8ef);
+  box-shadow:
+    0 6px 22px -4px rgba(0, 0, 0, .45),
+    0 0 0 4px rgba(255, 255, 255, .22),
+    inset 0 1px 0 rgba(255, 255, 255, .9),
+    inset 0 -3px 8px rgba(0, 0, 0, .08);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.compare-handle:hover .compare-knob,
+.compare-handle:focus-visible .compare-knob {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+.compare-arrow { width: 15px; height: 15px; color: #4b5563; filter: drop-shadow(0 1px 1px rgba(255, 255, 255, .7)); }
+@media (max-width: 700px) {
+  .compare { aspect-ratio: 4 / 3; }
+}
 </style>
 </head>
 <body>
@@ -880,17 +943,47 @@ section { scroll-margin-top: 84px; }
 </script>
 <script>
 /* ============================================================
-   ASSET BASE FIX — resolve assets/ relative to the page location
-   so images/videos work on GitHub Pages project sub-paths.
+   MEDIA URLS — paste your hosted file links below.
+   Replace each empty '' with the full URL, e.g.
+     'showcase.mp4': 'https://cdn.yoursite.com/videos/showcase.mp4'
+   All images/videos load ONLY from these links.
    ============================================================ */
-(function () {
-  'use strict';
-  var dir = location.pathname.substring(0, location.pathname.lastIndexOf('/') + 1);
-  document.querySelectorAll('img[src^="assets/"], video[src^="assets/"], source[src^="assets/"]').forEach(function (el) {
-    var src = el.getAttribute('src');
-    if (src && src.indexOf('assets/') === 0) el.setAttribute('src', dir + src);
-  });
-})();
+var MEDIA_URLS = {
+  'showcase.mp4': '',
+  'eevee-playback.mp4': '',
+  'cycles-playback.mp4': '',
+  'custom-gobo-system.mp4': '',
+  'custom-gobo-mixing.mp4': '',
+  'single-layer-blur.mp4': '',
+  'multilayer-blur.mp4': '',
+  'quick-fog.mp4': '',
+  'clouds-fog-combined.mp4': '',
+  'multilayer-mode.mp4': '',
+  'multilayer-render.mp4': '',
+  'gobos-mapping.mp4': '',
+  'swap-gobos.mp4': '',
+  'applying-gobo.mp4': '',
+  'swap-gobo-1.mp4': '',
+  'swap-gobo-2.mp4': '',
+  'mapping-controls.mp4': '',
+  'procedural-controls.mp4': '',
+  'procedural-panel.mp4': '',
+  'spot-to-area.mp4': '',
+  'gallery-size.mp4': '',
+  'abstract-clouds.mp4': '',
+  'render-1.mp4': '',
+  'render-2.mp4': '',
+  'render-3.mp4': '',
+  'render-4.mp4': '',
+  'render-5.mp4': '',
+  'render-6.mp4': '',
+  'render-7.mp4': '',
+  'render-8.mp4': '',
+  'f6bcfc5c3abadbd4f9e0f4da1403528e.png': '',
+  'd620c8bc29c9d4c7594453348e8b7e2c.jpg': '',
+  '8f1b924505dd918352fae46749ad1323.jpg': '',
+  'logo.png': 'https://mr3d.carrd.co/assets/images/image02.png?v=599bbeef'
+};
 </script>
 
 <!-- ============================================================ -->
@@ -901,7 +994,7 @@ section { scroll-margin-top: 84px; }
     <div class="brand-group">
       <a class="brand" href="https://superhivemarket.com/products/gobos-master?ref=473" target="_blank" rel="noopener" aria-label="Gobos Master home">
         <span class="brand-mark">
-          <img src="assets/images/logo.png" alt="Gobos Master logo" />
+          <img src="https://mr3d.carrd.co/assets/images/image02.png?v=599bbeef" alt="Gobos Master logo" />
         </span>
         Gobos <span style="color:var(--color-tertiary)">Master</span>
       </a>
@@ -1102,7 +1195,7 @@ section { scroll-margin-top: 84px; }
         </ul>
       </div>
       <div class="img-frame intro-media">
-        <video autoplay muted loop playsinline src="assets/videos/showcase.mp4" aria-label="Gobos Master showcase"></video>
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video03.mp4?v=599bbeef" aria-label="Gobos Master showcase"></video>
       </div>
     </div>
   </div>
@@ -1153,7 +1246,7 @@ section { scroll-margin-top: 84px; }
       </p>
     </div>
     <div class="img-frame reveal">
-      <img src="assets/images/f6bcfc5c3abadbd4f9e0f4da1403528e.png" alt="What is a gobo diagram" loading="lazy" />
+      <img src="https://mr3d.carrd.co/assets/images/image03.jpg?v=599bbeef" alt="What is a gobo diagram" loading="lazy" />
     </div>
 
     <h3 class="section-title reveal" style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin-top:2.4rem;">Why Use Gobos?</h3>
@@ -1162,9 +1255,21 @@ section { scroll-margin-top: 84px; }
       shaped by shadow (aka gobo). Light isn't just for seeing — it's for feeling. We break it up
       with gobos to create contrast, and let your render speak volumes.
     </p>
-    <div class="img-pair reveal">
-      <div class="img-frame"><img src="assets/images/d620c8bc29c9d4c7594453348e8b7e2c.jpg" alt="Scene without gobo" loading="lazy" /></div>
-      <div class="img-frame"><img src="assets/images/8f1b924505dd918352fae46749ad1323.jpg" alt="Scene with gobo" loading="lazy" /></div>
+    <div class="compare reveal" id="goboCompare">
+      <div class="compare-img compare-after">
+        <img src="https://mr3d.carrd.co/assets/images/image01.jpg?v=599bbeef" alt="Scene with gobo" loading="lazy" />
+        <span class="compare-label compare-label-right">With Gobo</span>
+      </div>
+      <div class="compare-img compare-before">
+        <img src="https://mr3d.carrd.co/assets/images/image04.jpg?v=599bbeef" alt="Scene without gobo" loading="lazy" />
+        <span class="compare-label compare-label-left">Without Gobo</span>
+      </div>
+      <div class="compare-handle" id="goboHandle" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+        <span class="compare-knob">
+          <svg class="compare-arrow compare-arrow-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+          <svg class="compare-arrow compare-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </span>
+      </div>
     </div>
 
     <div class="feature-grid">
@@ -2061,6 +2166,42 @@ section { scroll-margin-top: 84px; }
 </script>
 <script>
 /* ============================================================
+   COMPARISON SLIDER — before/after draggable divider
+   ============================================================ */
+(function () {
+  'use strict';
+  var comp = document.getElementById('goboCompare');
+  var handle = document.getElementById('goboHandle');
+  if (!comp || !handle) return;
+  var pos = 50;
+  function setPos(p) {
+    pos = Math.max(0, Math.min(100, p));
+    comp.style.setProperty('--pos', pos + '%');
+    handle.setAttribute('aria-valuenow', Math.round(pos));
+  }
+  function fromX(x) {
+    var r = comp.getBoundingClientRect();
+    setPos((x - r.left) / r.width * 100);
+  }
+  var dragging = false;
+  handle.addEventListener('pointerdown', function (e) {
+    dragging = true;
+    handle.setPointerCapture(e.pointerId);
+    fromX(e.clientX);
+  });
+  handle.addEventListener('pointermove', function (e) { if (dragging) fromX(e.clientX); });
+  handle.addEventListener('pointerup', function () { dragging = false; });
+  handle.addEventListener('pointercancel', function () { dragging = false; });
+  comp.addEventListener('click', function (e) { fromX(e.clientX); });
+  handle.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); setPos(pos - 5); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); setPos(pos + 5); }
+  });
+  setPos(50);
+})();
+</script>
+<script>
+/* ============================================================
    ASSETS LINK — wrap all images/videos in a link to the product
    ============================================================ */
 (function () {
@@ -2077,6 +2218,21 @@ section { scroll-margin-top: 84px; }
     a.style.color = 'inherit';
     el.parentNode.insertBefore(a, el);
     a.appendChild(el);
+  });
+})();
+</script>
+<script>
+/* ============================================================
+   MEDIA REWRITE — swap assets/ paths with hosted MEDIA_URLS
+   ============================================================ */
+(function () {
+  'use strict';
+  document.querySelectorAll('img, video').forEach(function (el) {
+    var src = el.getAttribute('src') || '';
+    if (/^https?:\/\//i.test(src)) return;  /* skip already-hosted links */
+    var key = src.split('/').pop();
+    var hosted = (window.MEDIA_URLS && MEDIA_URLS[key]) || '';
+    el.setAttribute('src', hosted);
   });
 })();
 </script>
