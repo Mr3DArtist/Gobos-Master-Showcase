@@ -357,9 +357,9 @@ section { scroll-margin-top: 84px; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 68px; }
 .brand-group { display: flex; align-items: center; gap: .7rem; min-width: 0; }
 .brand { display: flex; align-items: center; gap: .65rem; text-decoration: none; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.08rem; letter-spacing: -.01em; }
-.brand-mark { width: auto; height: auto; border-radius: 0; flex: none; background: #000; color: var(--bg); display: inline-flex; place-items: center; box-shadow: none; outline: none; overflow: hidden; line-height: 0; }
-.dark .brand-mark { background: transparent; }
-.brand-mark img { width: auto; height: auto; max-width: 48px; max-height: 48px; object-fit: contain; display: block; }
+.brand-mark { width: auto; height: auto; border-radius: 0; flex: none; background: transparent; color: var(--bg); display: inline-flex; place-items: center; box-shadow: none; outline: none; overflow: hidden; line-height: 0; }
+.brand-mark img { width: auto; height: auto; max-width: 48px; max-height: 48px; object-fit: contain; display: block; filter: invert(1); }
+.dark .brand-mark img { filter: none; }
 .header-actions { display: flex; align-items: center; gap: .7rem; }
 
 .version-badge {
@@ -914,11 +914,11 @@ section { scroll-margin-top: 84px; }
 <main id="top">
 
 <nav class="quick-nav container" aria-label="Quick navigation">
-  <a href="https://superhivemarket.com/products/gobos-master?ref=473#what" target="_blank" rel="noopener">Features</a>
-  <a href="https://superhivemarket.com/products/gobos-master?ref=473#roadmap" target="_blank" rel="noopener">Road Map</a>
-  <a href="https://superhivemarket.com/products/gobos-master?ref=473#specs" target="_blank" rel="noopener">Tech Specs</a>
-  <a href="https://superhivemarket.com/products/gobos-master?ref=473#pricing" target="_blank" rel="noopener">Pricing</a>
-  <a href="https://superhivemarket.com/products/gobos-master?ref=473#specs" class="quick-warm" target="_blank" rel="noopener">FAQ <span class="must-read">Must Read</span></a>
+  <a href="#what">Features</a>
+  <a href="#roadmap">Road Map</a>
+  <a href="#specs">Tech Specs</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#specs" class="quick-warm">FAQ <span class="must-read">Must Read</span></a>
 </nav>
 
 <!-- ============================================================ -->
@@ -949,7 +949,6 @@ section { scroll-margin-top: 84px; }
           <a class="g-thumb" href="#pricing">
             <span class="g-frame">
               <span class="g-ph gp-1" role="img" aria-label="Auto Facial MoCap Pro">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg>
               </span>
               <span class="g-ph-tag hot">Featured</span>
             </span>
@@ -960,7 +959,6 @@ section { scroll-margin-top: 84px; }
           <a class="g-thumb" href="https://blendermarket.com/products/true-dark-blender-themes-pack" target="_blank" rel="noopener">
             <span class="g-frame">
               <span class="g-ph gp-2" role="img" aria-label="True Dark Themes Pack">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg>
               </span>
             </span>
             <span class="g-caption"><span class="g-name">True Dark Themes Pack</span><span class="g-cta">View &rarr;</span></span>
@@ -970,7 +968,6 @@ section { scroll-margin-top: 84px; }
           <a class="g-thumb" href="https://superhivemarket.com/products/gobos-master" target="_blank" rel="noopener">
             <span class="g-frame">
               <span class="g-ph gp-3" role="img" aria-label="Gobos Master">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9c0-5-4-9-9-9Z"/><path d="M12 3v9l6 3"/></svg>
               </span>
               <span class="g-ph-tag hot">Hot</span>
             </span>
@@ -981,7 +978,6 @@ section { scroll-margin-top: 84px; }
           <a class="g-thumb" href="https://superhivemarket.com/products/decalify" target="_blank" rel="noopener">
             <span class="g-frame">
               <span class="g-ph gp-4" role="img" aria-label="Decalify">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/><path d="M16 6h4v4M8 18H4v-4"/></svg>
               </span>
             </span>
             <span class="g-caption"><span class="g-name">Decalify</span><span class="g-cta">View &rarr;</span></span>
@@ -991,7 +987,6 @@ section { scroll-margin-top: 84px; }
           <a class="g-thumb" href="#" title="Replace with your next add-on link">
             <span class="g-frame">
               <span class="g-ph gp-5" role="img" aria-label="Next add-on placeholder">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 20 6.5v11L12 22l-8-4.5v-11L12 2Z"/><path d="M12 8.5 16 11v2.5l-4 2.5-4-2.5V11l4-2.5Z"/></svg>
               </span>
             </span>
             <span class="g-caption"><span class="g-name">Add-on 05</span><span class="g-cta">View &rarr;</span></span>
@@ -2047,6 +2042,27 @@ section { scroll-margin-top: 84px; }
       });
     });
     if (video.readyState >= 1) requestAnimationFrame(tryDetect);
+  });
+})();
+</script>
+<script>
+/* ============================================================
+   ASSETS LINK — wrap all images/videos in a link to the product
+   ============================================================ */
+(function () {
+  'use strict';
+  var url = 'https://superhivemarket.com/products/gobos-master?ref=473';
+  document.querySelectorAll('.img-frame, .hero-media').forEach(function (el) {
+    if (el.closest('a')) return;                 /* skip if already inside a link */
+    var a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.style.display = 'block';
+    a.style.textDecoration = 'none';
+    a.style.color = 'inherit';
+    el.parentNode.insertBefore(a, el);
+    a.appendChild(el);
   });
 })();
 </script>
