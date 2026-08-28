@@ -506,7 +506,7 @@ section { scroll-margin-top: 84px; }
   flex-direction: column;
   justify-content: space-between;
   gap: .35rem;
-  font-size: var(--gl-fs, .92rem);
+  font-size: .9rem;
 }
 .gobo-list li {
   display: grid;
@@ -2507,32 +2507,6 @@ var MEDIA_URLS = {
     if (e.key === 'ArrowRight') { e.preventDefault(); setPos(pos + 5); }
   });
   setPos(50);
-})();
-</script>
-<script>
-/* ============================================================
-   AUTO-FIT GOBO LIST — scale text to fill the card height
-   ============================================================ */
-(function () {
-  'use strict';
-  function fit() {
-    var card = document.querySelector('.intro-list-card');
-    var list = document.querySelector('.gobo-list');
-    if (!card || !list) return;
-    var rows = list.children.length;
-    var cs = getComputedStyle(card);
-    var h = card.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
-    var gap = 5;
-    var fs = (h - (rows - 1) * gap) / (rows * 1.4);
-    fs = Math.max(12, Math.min(fs, 30));
-    card.style.setProperty('--gl-fs', fs + 'px');
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { setTimeout(fit, 60); });
-  } else {
-    setTimeout(fit, 60);
-  }
-  window.addEventListener('resize', fit);
 })();
 </script>
 <script>
