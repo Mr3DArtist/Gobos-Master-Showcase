@@ -513,7 +513,7 @@ section { scroll-margin-top: 84px; }
   grid-template-columns: auto 2.4ch 1fr 14ch;
   align-items: baseline;
   gap: .5rem .55rem;
-  font-size: .92rem;
+  font-size: 1em;
 }
 .gobo-list li::before {
   content: '';
@@ -897,12 +897,12 @@ section { scroll-margin-top: 84px; }
 }
 
 /* Button-5 expanding outline — everything else */
-.quick-nav a, .g-arrow, .version-badge, .action-btn, .theme-toggle, .tag, .roadmap .num, .pop-badge, .so-valid, .new-badge, .must-read, .g-ph-tag {
+.quick-nav a, .g-arrow, .version-badge, .action-btn, .theme-toggle, .tag, .roadmap .num, .pop-badge, .so-valid, .new-badge, .must-read, .g-ph-tag, .faq-btn {
   outline: 1px solid rgba(255,255,255,.5);
   outline-offset: 0;
   transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .5s ease, outline-offset .7s cubic-bezier(.19,1,.22,1), outline-color .7s cubic-bezier(.19,1,.22,1);
 }
-.quick-nav a:hover, .g-arrow:hover:not(:disabled), .version-badge:hover, .action-btn:hover, .theme-toggle:hover, .tag:hover, .roadmap .num:hover, .pop-badge:hover, .so-valid:hover, .new-badge:hover, .must-read:hover, .g-ph-tag:hover {
+.quick-nav a:hover, .g-arrow:hover:not(:disabled), .version-badge:hover, .action-btn:hover, .theme-toggle:hover, .tag:hover, .roadmap .num:hover, .pop-badge:hover, .so-valid:hover, .new-badge:hover, .must-read:hover, .g-ph-tag:hover, .faq-btn:hover {
   box-shadow: inset 0 0 20px color-mix(in srgb, var(--ink) 50%, transparent), 0 0 20px color-mix(in srgb, var(--ink) 16%, transparent);
   outline-color: rgba(255,255,255,0);
   outline-offset: 15px;
@@ -977,7 +977,7 @@ section { scroll-margin-top: 84px; }
 .hero-media video { border-radius: inherit; }
 
 /* Adaptive outline ring (faint white in dark, soft dark in light) */
-.quick-nav a, .g-arrow, .version-badge, .action-btn, .theme-toggle, .tag, .roadmap .num, .pop-badge, .so-valid, .new-badge, .must-read, .g-ph-tag, .brand-mark,
+.quick-nav a, .g-arrow, .version-badge, .action-btn, .theme-toggle, .tag, .roadmap .num, .pop-badge, .so-valid, .new-badge, .must-read, .g-ph-tag, .faq-btn, .brand-mark,
 .btn, .btn-primary,
 .feature-card, .price-card, .c-card, .g-frame, .cta-band, .accordion, .img-frame, .hero-media, .rating-card, .seam-label, .special-offer, .intro-list-card, .roadmap-card {
   outline-color: color-mix(in srgb, var(--ink) 20%, transparent);
@@ -2276,8 +2276,8 @@ var MEDIA_URLS = {
   var products = [
     { name: 'Auto Facial MoCap Pro', href: '#pricing', g: 'gp-1' },
     { name: 'True Dark Themes Pack', href: 'https://blendermarket.com/products/true-dark-blender-themes-pack', g: 'gp-2' },
-    { name: 'Gobos Master', href: 'https://superhivemarket.com/products/gobos-master', g: 'gp-3' },
-    { name: 'Decalify', href: 'https://superhivemarket.com/products/decalify', g: 'gp-4' },
+    { name: 'Gobos Master', href: 'https://superhivemarket.com/products/gobos-master?ref=473', g: 'gp-3' },
+    { name: 'Decalify', href: 'https://superhivemarket.com/products/decalify?ref=473', g: 'gp-4' },
     { name: 'Add-on 05', href: '#', g: 'gp-5' },
     { name: 'Add-on 06', href: '#', g: 'gp-6' },
     { name: 'Add-on 07', href: '#', g: 'gp-1' },
