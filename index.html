@@ -543,6 +543,15 @@ section { scroll-margin-top: 84px; }
   box-shadow: var(--shadow-light);
 }
 .intro-outer-card .intro-split { margin-top: 0; }
+.quickfog-outer {
+  border: 1px solid var(--border-strong);
+  border-radius: 22px;
+  background: var(--card-bg);
+  padding: .55rem;
+  margin-bottom: .8rem;
+  box-shadow: var(--shadow-light);
+}
+.quickfog-outer .img-frame { margin-top: 1rem; margin-bottom: 0; }
 
 /* Feature split — side-by-side panels with divider */
 .feature-split {
@@ -860,7 +869,7 @@ section { scroll-margin-top: 84px; }
 /* ============================================================
    LIQUID GLASS — refractive, glossy surfaces
    ============================================================ */
-.g-frame, .feature-card, .cta-band, .price-card, .accordion, .img-frame, .c-card, .intro-list-card, .roadmap-card, .intro-outer-card {
+.g-frame, .feature-card, .cta-band, .price-card, .accordion, .img-frame, .c-card, .intro-list-card, .roadmap-card, .intro-outer-card, .quickfog-outer {
   position: relative;
   background-color: var(--card-bg);
   background-image:
@@ -886,12 +895,12 @@ section { scroll-margin-top: 84px; }
 .price-card.featured { border-color: var(--color-tertiary); }
 
 /* Button-5 style expanding outline on cards */
-.feature-card, .price-card, .c-card, .g-frame, .cta-band, .accordion, .img-frame, .hero-media, .rating-card, .seam-label, .special-offer, .intro-list-card, .roadmap-card, .intro-outer-card, .v30-hero {
+.feature-card, .price-card, .c-card, .g-frame, .cta-band, .accordion, .img-frame, .hero-media, .rating-card, .seam-label, .special-offer, .intro-list-card, .roadmap-card, .intro-outer-card, .v30-hero, .quickfog-outer {
   outline: 1px solid rgba(255,255,255,.5);
   outline-offset: 0;
   transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease, background-position .5s ease, outline-offset .7s cubic-bezier(.19,1,.22,1), outline-color .7s cubic-bezier(.19,1,.22,1);
 }
-.feature-card:hover, .price-card:hover, .c-card:hover, .g-frame:hover, .cta-band:hover, .accordion:hover, .img-frame:hover, .hero-media:hover, .rating-card:hover, .seam-label:hover, .special-offer:hover, .intro-list-card:hover, .roadmap-card:hover, .intro-outer-card:hover, .v30-hero:hover {
+.feature-card:hover, .price-card:hover, .c-card:hover, .g-frame:hover, .cta-band:hover, .accordion:hover, .img-frame:hover, .hero-media:hover, .rating-card:hover, .seam-label:hover, .special-offer:hover, .intro-list-card:hover, .roadmap-card:hover, .intro-outer-card:hover, .v30-hero:hover, .quickfog-outer:hover {
   outline-color: rgba(255,255,255,0);
   outline-offset: 15px;
 }
@@ -1520,26 +1529,30 @@ var MEDIA_URLS = {
       <img src="https://mr3d.carrd.co/assets/images/image03.jpg?v=599bbeef" alt="What is a gobo diagram" loading="lazy" />
     </div>
 
-    <h3 class="section-title reveal" style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin-top:2.4rem;">Why Use Gobos?</h3>
-    <p class="copy-block reveal" style="max-width:760px;">
-      Below you can see two scenes: one on the left looks dull and unnatural. The other is alive,
-      shaped by shadow (aka gobo). Light isn't just for seeing — it's for feeling. We break it up
-      with gobos to create contrast, and let your render speak volumes.
-    </p>
-    <div class="compare reveal" id="goboCompare">
-      <div class="compare-img compare-after">
-        <img src="https://mr3d.carrd.co/assets/images/image01.jpg?v=599bbeef" alt="Scene with gobo" loading="lazy" />
-        <span class="compare-label compare-label-right">With Gobo</span>
-      </div>
-      <div class="compare-img compare-before">
-        <img src="https://mr3d.carrd.co/assets/images/image04.jpg?v=599bbeef" alt="Scene without gobo" loading="lazy" />
-        <span class="compare-label compare-label-left">Without Gobo</span>
-      </div>
-      <div class="compare-handle" id="goboHandle" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
-        <span class="compare-knob">
-          <svg class="compare-arrow compare-arrow-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
-          <svg class="compare-arrow compare-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-        </span>
+    <div class="quickfog-outer reveal">
+      <h3 class="section-title" style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin-top:0;text-align:center;">Why Use Gobos?</h3>
+      <p style="max-width:760px;margin:.8rem auto 0;text-align:center;">
+        Below you can see two scenes: one on the left looks dull and unnatural. The other is alive,
+        shaped by shadow (aka gobo). Light isn't just for seeing — it's for feeling. We break it up
+        with gobos to create contrast, and let your render speak volumes.
+      </p>
+    </div>
+    <div class="quickfog-outer reveal">
+      <div class="compare" id="goboCompare" style="margin:1rem 0 0;">
+        <div class="compare-img compare-after">
+          <img src="https://mr3d.carrd.co/assets/images/image01.jpg?v=599bbeef" alt="Scene with gobo" loading="lazy" />
+          <span class="compare-label compare-label-right">With Gobo</span>
+        </div>
+        <div class="compare-img compare-before">
+          <img src="https://mr3d.carrd.co/assets/images/image04.jpg?v=599bbeef" alt="Scene without gobo" loading="lazy" />
+          <span class="compare-label compare-label-left">Without Gobo</span>
+        </div>
+        <div class="compare-handle" id="goboHandle" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+          <span class="compare-knob">
+            <svg class="compare-arrow compare-arrow-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+            <svg class="compare-arrow compare-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </span>
+        </div>
       </div>
     </div>
 
@@ -1609,52 +1622,58 @@ var MEDIA_URLS = {
   <canvas class="section-particles" data-pattern="grid" aria-hidden="true"></canvas>
   <div class="container">
 
-    <div class="v30-hero reveal">
-      <h3 class="v30-kicker">New Custom Gobo System</h3>
-      <h2>Gobos Master 3.0 is Here!</h2>
-      <p>Version 3.0 Allows you to add Custom Gobo of your Choose (Supports Videos/Images).
-      Along with Multilayer Support and You can Mix and Match Gobos Using The Gobos Library and Custom gobos to create something Truly Unique.</p>
-    </div>
-
-    <div class="img-frame reveal">
-      <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video06.mp4?v=bd045c84" aria-label="Gobos Master 3.0"></video>
-    </div>
-    <div class="img-frame reveal">
-      <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video06.mp4?v=2362fb2f" aria-label="Gobos Master 3.0"></video>
-    </div>
-    <div class="feature-card reveal fc-center">
-      <div class="fc-body">
-        <h3>Gobo Blur</h3>
-        <p>Blur the gobo of your choice even when you have 3, 4, 5, 10 layers applied — giving you full control over the overall look and adding more realism into your scenes.</p>
-        <p class="slb-label"><b>Single Layer Blur</b></p>
+    <div class="quickfog-outer reveal">
+      <div class="v30-hero" style="margin-bottom:0;">
+        <h3 class="v30-kicker">New Custom Gobo System</h3>
+        <h2>Gobos Master 3.0 is Here!</h2>
+        <p>Version 3.0 Allows you to add Custom Gobo of your Choose (Supports Videos/Images).
+        Along with Multilayer Support and You can Mix and Match Gobos Using The Gobos Library and Custom gobos to create something Truly Unique.</p>
+      </div>
+      <div class="img-frame">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video06.mp4?v=bd045c84" aria-label="Gobos Master 3.0"></video>
+      </div>
+      <div class="img-frame">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video06.mp4?v=2362fb2f" aria-label="Gobos Master 3.0"></video>
       </div>
     </div>
-    <div class="img-frame reveal">
-      <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video07.mp4?v=710c4809" aria-label="Gobos Master 3.0"></video>
-    </div>
-    <div style="text-align:center; padding: 1.6rem 1rem;">
-      <p class="slb-label"><b>Multilayer Gobo Blur</b></p>
-    </div>
-    <div class="img-frame reveal">
-      <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video01.mp4?v=710c4809" aria-label="Multilayer gobo blur"></video>
-    </div>
-
-    <div class="feature-card reveal fc-center">
-      <div class="fc-body">
-        <h3>Quick Fog</h3>
-        <p>With a click of a button you can add a Fog Cube, and all the node controls are available in the add-on panel. An advanced fog shader is coming in the next update.</p>
+    <div class="quickfog-outer reveal">
+      <div class="feature-card fc-center">
+        <div class="fc-body">
+          <h3>Gobo Blur</h3>
+          <p>Blur the gobo of your choice even when you have 3, 4, 5, 10 layers applied — giving you full control over the overall look and adding more realism into your scenes.</p>
+          <p class="slb-label"><b>Single Layer Blur</b></p>
+        </div>
+      </div>
+      <div class="img-frame">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video07.mp4?v=710c4809" aria-label="Gobos Master 3.0"></video>
+      </div>
+      <div style="text-align:center; padding: 1.2rem 1rem 0;">
+        <p class="slb-label"><b>Multilayer Gobo Blur</b></p>
+      </div>
+      <div class="img-frame">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video09.mp4?v=a8c71166" aria-label="Multilayer gobo blur"></video>
       </div>
     </div>
 
-    <div class="img-frame reveal">
-      <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video01.mp4?v=7e4e3dce" aria-label="Quick fog"></video>
+    <div class="quickfog-outer reveal">
+      <div class="feature-card fc-center">
+        <div class="fc-body">
+          <h3>Quick Fog</h3>
+          <p>With a click of a button you can add a Fog Cube, and all the node controls are available in the add-on panel. An advanced fog shader is coming in the next update.</p>
+        </div>
+      </div>
+      <div class="img-frame">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video01.mp4?v=7e4e3dce" aria-label="Quick fog"></video>
+      </div>
     </div>
 
-    <div class="copy-block reveal" style="margin:1.6rem 0;">
-      <p><b>Abstract Procedural Clouds Gobo and Quick Fog Combined</b></p>
-    </div>
-    <div class="img-frame reveal">
-      <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video01.mp4?v=2362fb2f" aria-label="Procedural clouds + fog"></video>
+    <div class="quickfog-outer reveal">
+      <div style="text-align:center; padding: .4rem 1rem 0;">
+        <p class="slb-label" style="margin-top:.25rem;"><b>Abstract Procedural Clouds Gobo and Quick Fog Combined</b></p>
+      </div>
+      <div class="img-frame">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video01.mp4?v=2362fb2f" aria-label="Procedural clouds + fog"></video>
+      </div>
     </div>
   </div>
 </section>
@@ -1668,27 +1687,37 @@ var MEDIA_URLS = {
   <canvas class="section-particles" data-pattern="orbit" aria-hidden="true"></canvas>
   <div class="container">
 
-    <div class="img-frame reveal"><video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video12.mp4?v=db19698c" aria-label="Multilayer mode"></video></div>
-
-    <div class="copy-block reveal" style="margin:1.6rem 0;">
-      <p><b>Render of Multilayer Gobos</b></p>
-    </div>
-    <div class="img-frame reveal">
-      <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video12.mp4?v=117262c3" aria-label="Multilayer render"></video>
-    </div>
-
-    <div class="feature-card reveal">
-      <div class="fc-body"><h3>Gobos Mapping</h3><p>Reposition, rotate and scale gobo layers. Just select the layer and change the mapping sliders.</p></div>
-    </div>
-    <div class="img-frame reveal" style="margin-top:1rem;">
-      <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video01.mp4?v=7fc45c43" aria-label="Gobos mapping"></video>
-    </div>
-    <div class="feature-card reveal" style="margin-top:1rem;">
-      <div class="fc-body"><h3>Swap Gobos on Layers</h3><p>Select the layer, choose a gobo from the library, and press "swap active layer gobo".</p></div>
+    <div class="quickfog-outer reveal">
+      <div class="v30-hero" style="margin-bottom:0;">
+        <h2>Multilayer Gobos System</h2>
+        <p>If you want Multiple Gobos Then You can Enable Multilayer Mode (Select layer, Apply, Position, rotate, scale it. then select the next layer apply on it)</p>
+      </div>
+      <div class="img-frame">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video12.mp4?v=db19698c" aria-label="Multilayer mode"></video>
+      </div>
+      <div style="text-align:center; padding: 1.2rem 1rem 0;">
+        <p class="slb-label"><b>Render of Multilayer Gobos</b></p>
+      </div>
+      <div class="img-frame">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video12.mp4?v=117262c3" aria-label="Multilayer render"></video>
+      </div>
     </div>
 
-    <div class="img-frame reveal" style="margin-top:1rem;">
-      <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video01.mp4?v=a8c71166" aria-label="Swap gobos"></video>
+    <div class="quickfog-outer reveal">
+      <div class="feature-card fc-center">
+        <div class="fc-body"><h3>Gobos Mapping</h3><p>Reposition, rotate and scale gobo layers. Just select the layer and change the mapping sliders.</p></div>
+      </div>
+      <div class="img-frame">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video01.mp4?v=7fc45c43" aria-label="Gobos mapping"></video>
+      </div>
+    </div>
+    <div class="quickfog-outer reveal">
+      <div class="feature-card fc-center">
+        <div class="fc-body"><h3>Swap Gobos on Layers</h3><p>Select the layer, choose a gobo from the library, and press "swap active layer gobo".</p></div>
+      </div>
+      <div class="img-frame">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video01.mp4?v=a8c71166" aria-label="Swap gobos"></video>
+      </div>
     </div>
 
     <div class="img-frame reveal"><video autoplay muted loop playsinline src="assets/videos/gobos-mapping.mp4" aria-label="Gobos mapping"></video></div>
