@@ -547,11 +547,13 @@ section { scroll-margin-top: 84px; }
   border: 1px solid var(--border-strong);
   border-radius: 22px;
   background: var(--card-bg);
-  padding: .55rem;
-  margin-bottom: .8rem;
+  padding: .35rem;
+  margin-bottom: .55rem;
   box-shadow: var(--shadow-light);
 }
-.quickfog-outer .img-frame { margin-top: 1rem; margin-bottom: 0; }
+.quickfog-outer .img-frame { margin-top: .55rem; margin-bottom: 0; }
+.quickfog-outer .feature-card .fc-body { padding: .7rem 1rem !important; }
+#features .quickfog-outer { margin-bottom: .55rem; }
 
 /* Feature split — side-by-side panels with divider */
 .feature-split {
@@ -736,7 +738,7 @@ section { scroll-margin-top: 84px; }
 /* ============================================================
    PRICING & LICENSE TIERS
    ============================================================ */
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; align-items: stretch; max-width: 72%; margin-inline: auto; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .55rem; align-items: stretch; max-width: 58%; margin-inline: auto; }
 .price.small { font-size: 1.8rem; line-height: 1.3; }
 .price-card {
   position: relative; display: flex; flex-direction: column;
@@ -1010,7 +1012,7 @@ section { scroll-margin-top: 84px; }
 .compare-img { position: absolute; inset: 0; }
 .compare-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .compare-after { z-index: 1; }
-.compare-before { z-index: 2; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.compare-before { z-index: 2; clip-path: inset(0 calc(100% - var(--pos)) 0 0); transition: clip-path .8s ease; }
 .compare-label {
   position: absolute; bottom: 14px;
   font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
@@ -1032,7 +1034,10 @@ section { scroll-margin-top: 84px; }
   transform: translateX(-50%);
   cursor: ew-resize; touch-action: none; outline: none;
   z-index: 3;
+  transition: left .8s ease;
 }
+.compare.dragging .compare-before,
+.compare.dragging .compare-handle { transition: none; }
 .compare-knob {
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
@@ -1530,14 +1535,14 @@ var MEDIA_URLS = {
     </div>
 
     <div class="quickfog-outer reveal">
-      <h3 class="section-title" style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin-top:0;text-align:center;">Why Use Gobos?</h3>
-      <p style="max-width:760px;margin:.8rem auto 0;text-align:center;">
-        Below you can see two scenes: one on the left looks dull and unnatural. The other is alive,
-        shaped by shadow (aka gobo). Light isn't just for seeing — it's for feeling. We break it up
-        with gobos to create contrast, and let your render speak volumes.
-      </p>
-    </div>
-    <div class="quickfog-outer reveal">
+      <div class="v30-hero" style="margin-bottom:0;">
+        <h3 class="section-title" style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin-top:0;">Why Use Gobos?</h3>
+        <p style="max-width:760px;margin:.8rem auto 0;">
+          Below you can see two scenes: one on the left looks dull and unnatural. The other is alive,
+          shaped by shadow (aka gobo). Light isn't just for seeing — it's for feeling. We break it up
+          with gobos to create contrast, and let your render speak volumes.
+        </p>
+      </div>
       <div class="compare" id="goboCompare" style="margin:1rem 0 0;">
         <div class="compare-img compare-after">
           <img src="https://mr3d.carrd.co/assets/images/image01.jpg?v=599bbeef" alt="Scene with gobo" loading="lazy" />
@@ -1554,19 +1559,19 @@ var MEDIA_URLS = {
           </span>
         </div>
       </div>
-    </div>
 
-    <div class="feature-grid">
-      <div class="feature-card reveal">
-        <div class="fc-body">
-          <h3>Speeds up Rendering</h3>
-          <p>Adding actual objects (trees, windows, etc.) just to generate shadows significantly increases render times. A 60-second-per-frame scene may rise to ~75s. Gobos Master removes the need for extra geometry — adding only 1–2 seconds of render time.</p>
+      <div class="feature-grid" style="grid-template-columns:1fr; margin-top:1rem;">
+        <div class="feature-card reveal fc-center">
+          <div class="fc-body">
+            <h3>Speeds up Rendering</h3>
+            <p>Adding actual objects (trees, windows, etc.) just to generate shadows significantly increases render times. A 60-second-per-frame scene may rise to ~75s. Gobos Master removes the need for extra geometry — adding only 1–2 seconds of render time.</p>
+          </div>
         </div>
-      </div>
-      <div class="feature-card reveal">
-        <div class="fc-body">
-          <h3>Note on layers</h3>
-          <p>Adding more than 4 layers of gobos does increase render times a bit — but a new powerful add-on feature is in the works to make it very fast. Stay tuned.</p>
+        <div class="feature-card reveal fc-center">
+          <div class="fc-body">
+            <h3>Note on layers</h3>
+            <p>Adding more than 4 layers of gobos does increase render times a bit — but a new powerful add-on feature is in the works to make it very fast. Stay tuned.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1720,8 +1725,6 @@ var MEDIA_URLS = {
       </div>
     </div>
 
-    <div class="img-frame reveal"><video autoplay muted loop playsinline src="assets/videos/gobos-mapping.mp4" aria-label="Gobos mapping"></video></div>
-    <div class="img-frame reveal"><video autoplay muted loop playsinline src="assets/videos/swap-gobos.mp4" aria-label="Swap gobos"></video></div>
   </div>
 </section>
 
@@ -1733,40 +1736,87 @@ var MEDIA_URLS = {
   <span class="seam-label">Features</span>
   <canvas class="section-particles" data-pattern="drift" aria-hidden="true"></canvas>
   <div class="container">
-    <div class="copy-block reveal" style="max-width:820px;margin:0 auto;text-align:center;">
-      <p>Simply select the gobo category, select the gobo, choose where you want to place it
-      <b>(At World, At Cursor, At Selected)</b>.</p>
-      <p>
-        Press <b>Add Spot Light Gobo</b> if you're working with Cycles — if you're working with Eevee,
-        press <b>Add Eevee Gobo Plane</b>. And there you have it!
-      </p>
+    <div class="quickfog-outer reveal">
+      <div class="feature-card fc-center">
+        <div class="fc-body" style="padding:.8rem 1.2rem;">
+          <p>Simply select the gobo category, select the gobo, choose where you want to place it
+          <b>(At World, At Cursor, At Selected)</b>.</p>
+          <p>
+            Press <b>Add Spot Light Gobo</b> if you're working with Cycles — if you're working with Eevee,
+            press <b>Add Eevee Gobo Plane</b>. And there you have it!
+          </p>
+        </div>
+      </div>
+      <div class="img-frame" style="margin:.55rem 0 0;">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video01.mp4?v=6f7c09d1" aria-label="Applying a gobo"></video>
+      </div>
+      <div class="img-frame" style="margin-top:.55rem;">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video01.mp4?v=44f01ffb" aria-label="Applying a gobo"></video>
+      </div>
     </div>
-    <div class="img-frame reveal"><video autoplay muted loop playsinline src="assets/videos/applying-gobo.mp4" aria-label="Applying a gobo"></video></div>
 
-    <div class="feature-grid">
-      <div class="feature-card reveal"><div class="fc-body"><h3>Easily Swap Gobo</h3><p>Select the light or Eevee plane with a gobo applied, choose any other gobo from the gallery, and press Swap Gobo.</p></div></div>
-      <div class="feature-card reveal"><div class="fc-body"><h3>Easy Gobo Mapping Controls</h3><p>Blur, position, scale, and control the rotation of the gobo — along with gobo texture bound controls.</p></div></div>
-      <div class="feature-card reveal"><div class="fc-body"><h3>Procedural Controls in the Panel</h3><p>Depending on the procedural gobo, different controls will appear right in the add-on panel.</p></div></div>
-      <div class="feature-card reveal"><div class="fc-body"><h3>Switch Spot to Area Light</h3><p>Switch from spot to area light gobo easily.</p></div></div>
+    <div class="feature-grid" style="grid-template-columns:1fr; margin-top:0; gap:0;">
+      <div class="quickfog-outer reveal">
+        <div class="feature-card fc-center">
+          <div class="fc-body" style="padding:.8rem 1.2rem;"><h3>Easily Swap Gobo</h3><p>Select the light or Eevee plane with a gobo applied, choose any other gobo from the gallery, and press Swap Gobo.</p></div>
+        </div>
+        <div class="img-pair" style="margin:.55rem 0 0; gap:.55rem;">
+          <div class="img-frame"><video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video19.mp4?v=aacc3338" aria-label="Swap gobo"></video></div>
+          <div class="img-frame"><video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video18.mp4?v=aacc3338" aria-label="Swap gobo"></video></div>
+        </div>
+      </div>
+      <div class="quickfog-outer reveal">
+        <div class="feature-card fc-center">
+          <div class="fc-body" style="padding:.8rem 1.2rem;"><h3>Easy Gobo Mapping Controls</h3><p>Blur, position, scale, and control the rotation of the gobo — along with gobo texture bound controls.</p></div>
+        </div>
+        <div class="img-frame" style="margin:.55rem 0 0;">
+          <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video21.mp4?v=aacc3338" aria-label="Gobo mapping controls"></video>
+        </div>
+        <div class="img-frame" style="margin-top:.55rem;">
+          <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video20.mp4?v=aacc3338" aria-label="Gobo mapping controls"></video>
+        </div>
+      </div>
+      <div class="quickfog-outer reveal">
+        <div class="feature-card fc-center">
+          <div class="fc-body" style="padding:.8rem 1.2rem;"><h3>Procedural Controls in the Panel</h3><p>Depending on the procedural gobo, different controls will appear right in the add-on panel.</p></div>
+        </div>
+        <div class="img-frame" style="margin:.55rem 0 0;">
+          <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video22.mp4?v=aacc3338" aria-label="Procedural controls"></video>
+        </div>
+      </div>
+      <div class="quickfog-outer reveal">
+        <div class="feature-card fc-center">
+          <div class="fc-body" style="padding:.8rem 1.2rem;"><h3>Switch Spot to Area Light</h3><p>Switch from spot to area light gobo easily.</p></div>
+        </div>
+        <div class="img-frame" style="margin:.55rem 0 0;">
+          <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video23.mp4?v=aacc3338" aria-label="Spot to area light"></video>
+        </div>
+      </div>
     </div>
 
-    <div class="img-pair reveal">
-      <div class="img-frame"><video autoplay muted loop playsinline src="assets/videos/swap-gobo-1.mp4" aria-label="Swap gobo 1"></video></div>
-      <div class="img-frame"><video autoplay muted loop playsinline src="assets/videos/swap-gobo-2.mp4" aria-label="Swap gobo 2"></video></div>
+    <div class="quickfog-outer reveal">
+      <div class="img-frame" style="margin:0;">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video01.mp4?v=aacc3338" aria-label="Procedural gobo panel"></video>
+      </div>
     </div>
-    <div class="img-frame reveal"><video autoplay muted loop playsinline src="assets/videos/mapping-controls.mp4" aria-label="Gobo mapping controls"></video></div>
-    <div class="img-frame reveal"><video autoplay muted loop playsinline src="assets/videos/procedural-controls.mp4" aria-label="Procedural controls"></video></div>
-    <div class="img-frame reveal"><video autoplay muted loop playsinline src="assets/videos/procedural-panel.mp4" aria-label="Procedural gobo panel"></video></div>
 
-    <div class="copy-block reveal" style="margin:1.6rem 0;">
-      <p style="font-size:1.4rem;"><b>Switch From Spot to Area Light Gobo Easily</b></p>
+    <div class="quickfog-outer reveal">
+      <div style="text-align:center; padding:.8rem 1rem 0;">
+        <p class="slb-label" style="font-size:1.1rem; margin-top:.25rem;"><b>Switch From Spot to Area Light Gobo Easily</b></p>
+      </div>
+      <div class="img-frame" style="margin:.55rem 0 0;">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video23.mp4?v=aacc3338" aria-label="Spot to area light"></video>
+      </div>
     </div>
-    <div class="img-frame reveal"><video autoplay muted loop playsinline src="assets/videos/spot-to-area.mp4" aria-label="Spot to area light"></video></div>
 
-    <div class="copy-block reveal" style="margin:1.6rem 0;">
-      <p style="font-size:1.4rem;"><b>Icon Gallery Size and Asset Popup Size</b></p>
+    <div class="quickfog-outer reveal">
+      <div style="text-align:center; padding:.8rem 1rem 0;">
+        <p class="slb-label" style="font-size:1.1rem; margin-top:.25rem;"><b>Icon Gallery Size and Asset Popup Size</b></p>
+      </div>
+      <div class="img-frame" style="margin:.55rem 0 0;">
+        <video autoplay muted loop playsinline src="https://mr3d.carrd.co/assets/videos/video24.mp4?v=aacc3338" aria-label="Gallery size"></video>
+      </div>
     </div>
-    <div class="img-frame reveal"><video autoplay muted loop playsinline src="assets/videos/gallery-size.mp4" aria-label="Gallery size"></video></div>
   </div>
 </section>
 
@@ -1780,7 +1830,7 @@ var MEDIA_URLS = {
   <div class="container">
     <div class="img-frame reveal"><video autoplay muted loop playsinline src="assets/videos/abstract-clouds.mp4" aria-label="Abstract clouds"></video></div>
 
-    <div class="feature-grid">
+    <div class="feature-grid" style="margin-top:0; gap:.55rem;">
       <div class="feature-card reveal"><div class="img-frame" style="margin:0;border:0;border-radius:0;"><video autoplay muted loop playsinline src="assets/videos/render-1.mp4" aria-label="Render idea 1"></video></div></div>
       <div class="feature-card reveal"><div class="img-frame" style="margin:0;border:0;border-radius:0;"><video autoplay muted loop playsinline src="assets/videos/render-2.mp4" aria-label="Render idea 2"></video></div></div>
       <div class="feature-card reveal"><div class="img-frame" style="margin:0;border:0;border-radius:0;"><video autoplay muted loop playsinline src="assets/videos/render-3.mp4" aria-label="Render idea 3"></video></div></div>
@@ -2511,6 +2561,7 @@ var MEDIA_URLS = {
   var comp = document.getElementById('goboCompare');
   var handle = document.getElementById('goboHandle');
   if (!comp || !handle) return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var pos = 50;
   function setPos(p) {
     pos = Math.max(0, Math.min(100, p));
@@ -2522,20 +2573,53 @@ var MEDIA_URLS = {
     setPos((x - r.left) / r.width * 100);
   }
   var dragging = false;
-  handle.addEventListener('pointerdown', function (e) {
+  function down(e) {
     dragging = true;
-    handle.setPointerCapture(e.pointerId);
+    comp.classList.add('dragging');
+    stopAuto();
     fromX(e.clientX);
-  });
-  handle.addEventListener('pointermove', function (e) { if (dragging) fromX(e.clientX); });
-  handle.addEventListener('pointerup', function () { dragging = false; });
-  handle.addEventListener('pointercancel', function () { dragging = false; });
-  comp.addEventListener('click', function (e) { fromX(e.clientX); });
+  }
+  function move(e) { if (dragging) fromX(e.clientX); }
+  function up() {
+    if (!dragging) return;
+    dragging = false;
+    comp.classList.remove('dragging');
+    scheduleAuto();
+  }
+  comp.addEventListener('pointerdown', down);
+  window.addEventListener('pointermove', move);
+  window.addEventListener('pointerup', up);
+  window.addEventListener('pointercancel', up);
   handle.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowLeft') { e.preventDefault(); setPos(pos - 5); }
-    if (e.key === 'ArrowRight') { e.preventDefault(); setPos(pos + 5); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); stopAuto(); setPos(pos - 5); scheduleAuto(); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); stopAuto(); setPos(pos + 5); scheduleAuto(); }
   });
+
+  var autoTimer = null;
+  var autoDelay = null;
+  var dir = 1;
+  var minP = 0, maxP = 100;
+  function autoSlide() {
+    dir = -dir;
+    setPos(dir === 1 ? maxP : minP);
+  }
+  function stopAuto() {
+    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    if (autoDelay) { clearTimeout(autoDelay); autoDelay = null; }
+  }
+  function startAuto() {
+    if (reduceMotion) return;
+    stopAuto();
+    autoTimer = setInterval(autoSlide, 1000);
+  }
+  function scheduleAuto() {
+    if (reduceMotion) return;
+    if (autoDelay) clearTimeout(autoDelay);
+    autoDelay = setTimeout(startAuto, 2000);
+  }
+
   setPos(50);
+  startAuto();
 })();
 </script>
 <script>
