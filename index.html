@@ -430,8 +430,8 @@ section { scroll-margin-top: 84px; }
 
 /* FAQ Must Read — matches the old quick-nav warm pill */
 .faq-btn {
-  display: inline-flex; align-items: center; gap: .4rem;
-  padding: .3rem .9rem;
+  display: inline-flex; align-items: center; gap: .2rem;
+  padding: .24rem .6rem;
   border-radius: 999px;
   background: var(--card-bg);
   border: 1px solid var(--border-strong);
@@ -441,6 +441,7 @@ section { scroll-margin-top: 84px; }
   transition: transform .2s ease, border-color .2s ease, background .2s ease;
 }
 .faq-btn:hover { transform: translateY(-1px); border-color: var(--color-tertiary); }
+.faq-btn .must-read { margin-left: 4px; margin-right: -5px; }
 @media (max-width: 620px) { .faq-btn { display: none; } }
 
 /* Theme toggle switch */
@@ -738,8 +739,8 @@ section { scroll-margin-top: 84px; }
 /* Must Read badge */
 .must-read {
   display: inline-flex; align-items: center;
-  font-size: .66rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
-  padding: .18rem .55rem; border-radius: 999px;
+  font-size: .6rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+  padding: .14rem .4rem; border-radius: 999px;
   background: linear-gradient(135deg, #f59e0b, #ef4444);
   color: #fff;
 }
