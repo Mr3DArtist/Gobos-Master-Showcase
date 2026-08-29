@@ -148,18 +148,18 @@ section { scroll-margin-top: 84px; }
 .g-arrow svg { width: 18px; height: 18px; }
 .gallery-viewport { position: relative; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; scroll-snap-type: x mandatory; scroll-behavior: smooth; }
 .gallery-viewport::-webkit-scrollbar { display: none; }
-.gallery-track { --g-gap: .6rem; display: flex; gap: var(--g-gap); list-style: none; padding: 2px 0 2px; justify-content: center; }
-.g-card { flex: 0 0 calc((100% - 3 * var(--g-gap)) / 4 * 0.6); scroll-snap-align: start; min-width: 0; }
-@media (max-width: 1000px) { .g-card { flex: 0 0 calc((100% - 2 * var(--g-gap)) / 3); } }
-@media (max-width: 640px) { .g-card { flex: 0 0 calc((100% - 1 * var(--g-gap)) / 2); } }
-@media (max-width: 420px) { .g-card { flex: 0 0 82%; } }
+.gallery-track { --g-gap: .35rem; display: flex; gap: var(--g-gap); list-style: none; padding: 2px 0 2px; justify-content: center; }
+.g-card { flex: 0 0 calc((100% - 3 * var(--g-gap)) / 4); scroll-snap-align: start; min-width: 0; }
+@media (max-width: 1000px) { .g-card { flex: 0 0 calc((100% - 3 * var(--g-gap)) / 4); } }
+@media (max-width: 640px) { .g-card { flex: 0 0 calc((100% - 3 * var(--g-gap)) / 4); } }
+@media (max-width: 420px) { .g-card { flex: 0 0 calc((100% - 3 * var(--g-gap)) / 4); } }
 .g-thumb { display: block; text-decoration: none; color: inherit; }
 .g-frame { position: relative; display: block; border-radius: 16px; overflow: hidden; aspect-ratio: 1 / 1; border: 1px solid var(--border-strong); background: var(--card-bg); box-shadow: 0 14px 32px -20px color-mix(in srgb, var(--ink) 22%, transparent); }
 .g-ph { position: absolute; inset: 0; display: grid; place-items: center; color: var(--ink); transition: transform .55s cubic-bezier(.22,.61,.36,1); }
 .g-thumb:hover .g-ph { transform: scale(1.08); }
 .g-thumb:hover .g-ph-tag { transform: scale(1.2); }
 .g-ph svg { width: 34px; height: 34px; opacity: .85; }
-.g-ph-tag { position: absolute; right: 4px; bottom: 3px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .12rem .38rem; border-radius: 12px; background: linear-gradient(140deg, #171717, #3f3f46) padding-box, conic-gradient(from var(--badge-angle), #737373, #d4d4d8, #fafafa, #d4d4d8, #737373) border-box; border: 2px solid transparent; color: #fff; transform-origin: bottom right; transition: transform .55s cubic-bezier(.22,.61,.36,1); animation: badgeSpin 4s linear infinite; }
+.g-ph-tag { position: absolute; right: 4px; bottom: 3px; font-size: .55rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; padding: .08rem .27rem; border-radius: 9px; background: linear-gradient(140deg, #171717, #3f3f46) padding-box, conic-gradient(from var(--badge-angle), #737373, #d4d4d8, #fafafa, #d4d4d8, #737373) border-box; border: 2px solid transparent; color: #fff; transform-origin: bottom right; transition: transform .55s cubic-bezier(.22,.61,.36,1); animation: badgeSpin 4s linear infinite; }
 @property --badge-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
 @keyframes badgeSpin { to { --badge-angle: 360deg; } }
 .gp-1 { background: radial-gradient(60% 60% at 30% 30%, var(--glow-tertiary), transparent 70%), linear-gradient(140deg, #163a33, #0b1f1a); }
@@ -370,11 +370,12 @@ section { scroll-margin-top: 84px; }
     linear-gradient(color-mix(in srgb, var(--bg) 92%, transparent), color-mix(in srgb, var(--bg) 92%, transparent)) padding-box,
     conic-gradient(from var(--badge-angle), #737373, #d4d4d8, #fafafa, #d4d4d8, #737373) border-box;
   border: 2px solid transparent;
-  border-radius: 999px; box-shadow: 0 4px 12px -6px color-mix(in srgb, var(--ink) 25%, transparent);
+  border-radius: 999px; box-shadow: 0 4px 12px -6px color-mix(in srgb, var(--ink) 25%, transparent), 0 0 20px -4px rgba(35, 165, 90, .6);
   white-space: nowrap; text-decoration: none; color: inherit;
-  transition: transform .2s ease, border-color .2s ease;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .3s ease;
   animation: badgeSpin 4s linear infinite;
 }
+.version-badge:hover { box-shadow: 0 4px 12px -6px color-mix(in srgb, var(--ink) 25%, transparent), 0 0 26px -2px rgba(35, 165, 90, .8); }
 .version-badge .latest-tag { margin-left: -5px; }
 .version-badge:hover { transform: translateY(-1px); border-color: transparent; }
 .vb-live { display: inline-flex; align-items: center; gap: .35rem; padding: .16rem .5rem; border-radius: 999px; background: color-mix(in srgb, var(--color-accent) 16%, transparent); color: var(--color-accent); font-size: .66rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
@@ -405,7 +406,7 @@ section { scroll-margin-top: 84px; }
   white-space: nowrap; font-size: .68rem;
 }
 .latest-dot {
-  width: 8px; height: 8px; border-radius: 50%;
+  width: 6px; height: 6px; border-radius: 50%;
   background: rgb(35, 165, 90);
   animation: latestBlink 1.2s ease-in-out infinite;
 }
@@ -561,7 +562,7 @@ section { scroll-margin-top: 84px; }
   border: 1px solid var(--border-strong);
   border-radius: 22px;
   background: var(--card-bg);
-  padding: .35rem;
+  padding: .2rem .35rem;
   margin-bottom: .55rem;
   box-shadow: var(--shadow-light);
 }
@@ -1453,24 +1454,24 @@ var MEDIA_URLS = {
   <span class="seam-label">Intro</span>
   <canvas class="section-particles" data-pattern="drift" aria-hidden="true"></canvas>
   <div class="container">
-    <div class="quickfog-outer reveal">
-      <div style="text-align:center; padding:.8rem 1rem;">
-        <h3 class="section-title" style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin-top:0;">What's Included in Assets</h3>
-        <p style="max-width:760px;margin:.8rem auto 0;">
-          <span style="font-weight:bolder;"><a href="https://superhivemarket.com/products/gobos-master?ref=473" target="_blank" style="color:var(--color-tertiary);">Gobos Master</a></span>
-          lets you infuse captivating,&nbsp;real-time&nbsp;realistic&nbsp;<b>Looping</b>&nbsp;shadow effects into your
-          scenes in a matter of&nbsp;<b>seconds.</b>&nbsp;It's a comprehensive library covering
-          <b>13 categories</b> of over <b>198</b> high-quality gobos to create ultra-realistic shadows in your scenes.
-        </p>
-        <p style="max-width:760px;margin:.8rem auto 0;">
-          <b>Here is what you will find in the Collection!</b><br />
-          Each gobo has been fine-tuned to deliver the best possible shadows, with resolutions tailored
-          to their complexity. The most intricate ones are in <b>4K</b>, while others are crafted in
-          <b>3K</b>, <b>2K</b>, and even in <b>1K</b>, ensuring the perfect balance between detail and performance.
-        </p>
-      </div>
-    </div>
     <div class="intro-outer-card reveal">
+      <div class="quickfog-outer reveal" style="margin-bottom:.55rem;">
+        <div style="text-align:center; padding:.8rem 1rem;">
+          <h3 class="section-title" style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin-top:0;">What's Included in Assets</h3>
+          <p style="max-width:760px;margin:.8rem auto 0;">
+            <span style="font-weight:bolder;"><a href="https://superhivemarket.com/products/gobos-master?ref=473" target="_blank" style="color:var(--color-tertiary);">Gobos Master</a></span>
+            lets you infuse captivating,&nbsp;real-time&nbsp;realistic&nbsp;<b>Looping</b>&nbsp;shadow effects into your
+            scenes in a matter of&nbsp;<b>seconds.</b>&nbsp;It's a comprehensive library covering
+            <b>13 categories</b> of over <b>198</b> high-quality gobos to create ultra-realistic shadows in your scenes.
+          </p>
+          <p style="max-width:760px;margin:.8rem auto 0;">
+            <b>Here is what you will find in the Collection!</b><br />
+            Each gobo has been fine-tuned to deliver the best possible shadows, with resolutions tailored
+            to their complexity. The most intricate ones are in <b>4K</b>, while others are crafted in
+            <b>3K</b>, <b>2K</b>, and even in <b>1K</b>, ensuring the perfect balance between detail and performance.
+          </p>
+        </div>
+      </div>
       <div class="intro-split">
       <div class="intro-list-card">
         <ul class="gobo-list">
@@ -1543,13 +1544,15 @@ var MEDIA_URLS = {
   <canvas class="section-particles" data-pattern="flow" aria-hidden="true"></canvas>
   <div class="container">
     <div class="quickfog-outer reveal">
-      <div class="v30-hero" style="margin-bottom:0;">
-        <h3 class="section-title" style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin-top:0;">What is a Gobo?</h3>
-        <p style="max-width:760px;margin:.8rem auto 0;">
-          A <b>gobo</b> (short for "goes before optics") is a stencil or template placed in front of a
-          light source to shape the light into patterns, textures, or images — commonly used in stage
-          lighting, photography, and architecture.
-        </p>
+      <div class="quickfog-outer reveal" style="margin-bottom:.55rem;">
+        <div style="text-align:center; padding:.8rem 1rem;">
+          <h3 class="section-title" style="font-size:clamp(1.4rem,2.6vw,1.9rem);margin-top:0;">What is a Gobo?</h3>
+          <p style="max-width:760px;margin:.8rem auto 0;">
+            A <b>gobo</b> (short for "goes before optics") is a stencil or template placed in front of a
+            light source to shape the light into patterns, textures, or images — commonly used in stage
+            lighting, photography, and architecture.
+          </p>
+        </div>
       </div>
       <div class="img-frame" style="margin:.55rem 0 0;">
         <img src="https://mr3d.carrd.co/assets/images/image03.jpg?v=599bbeef" alt="What is a gobo diagram" loading="lazy" />
